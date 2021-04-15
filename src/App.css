@@ -1,38 +1,23 @@
-.App {
-  text-align: center;
+body {
+  width: 100%;
+  height: max-content;
+  margin: auto 0;
+  font-family: "Josefin Sans", sans-serif;
+  color: #ffffff;
+  background-image: url(https://static6.depositphotos.com/1003229/609/v/450/depositphotos_6096843-stock-illustration-circuit-board-vector-background.jpg);
+  background-size: cover;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#app {
+  width: 90%;
+  margin: auto;
+  height: inherit;
+  min-height: 1200px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
