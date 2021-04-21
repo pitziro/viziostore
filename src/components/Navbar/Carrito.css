@@ -1,0 +1,43 @@
+.lista_simple {
+  width: 80%;
+  margin: 10px 0 0 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.lista_simple a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+  color: inherit;
+}
+
+.lista_inline {
+  display: inline-block;
+  text-align: center;
+}
+
+.sec_user {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.carrito {
+  display: flex;
+  align-items: center;
+}
+
+.carrito p {
+  margin: 0 0 0 5px;
+}
+
+.carrito img {
+  width: 24px;
+  height: 24px;
+}
+
+.avatar img {
+  width: 40px;
+  height: 40px;
+}

@@ -1,36 +1,45 @@
 import React, { useState } from 'react';
 import Banner from './Banner';
+import { Carrito } from './Carrito';
+
 import './Navbar.css';
 
 
 function Navbar() {
+
+    /*logica interna*/
+    const USER = {
+        name : 'Manuel Sarmiento',
+        avatar : 'https://images.unsplash.com/photo-1618762869108-155c69284f61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80'
+    }
+
+    const CART = 2
+
+    const NAV_LIST = [
+        'Youtube',
+        'Twitch',
+        'VizioTeam',
+        'Contacto'
+    ]
+
     return (
     <div id="zona_top">
         
         {/* zona logo */}
         <section id="top_logo" >
-            <a  class="logo__link" href="index.html">
-                <img src="img/logo_transparente.png" title="VizioZone Home"/>
+            <a  className="logo__link" href="index.html">
+                <img src="img/logo_transparente.png" title="VizioZone Home" alt='Home'/>
             </a>
         </section>
-
         
         <section id="top_libre" >
-            {/* zona banner */}
             <div id="top_libre_flash">
                 <Banner/>
             </div>
             
-        
-            {/* zona nav */}
-            <nav id="top_libre_nav"> 
-                <ul class="lista_simple mt-2">
-                        <li class="lista_inline"><a href="/"> Youtube</a></li>
-                        <li class="lista_inline"><a href="/"> Twitch</a></li>
-                        <li class="lista_inline"><a href="/" target="_self"> VizioTeam</a></li>
-                        <li class="lista_inline"><a href="/" target="_self"> Contacto </a></li>
-                </ul>
-            </nav>
+            <div id="top_libre_nav"> 
+                <Carrito user={USER} cartQuantity={CART} navigationList={NAV_LIST}/>
+            </div>
         </section>
     </div>
     )
