@@ -15,12 +15,10 @@ function Navbar() {
 
     const CART = 2
 
-    const NAV_LIST = [
-        'Youtube',
-        'Twitch',
-        'VizioTeam',
-        'Contacto'
-    ]
+    const [nav_list, setNavList] = useState (['Youtube',
+    'Twitch',
+    'VizioTeam',
+    'Contacto'])
 
     return (
     <div id="zona_top">
@@ -38,7 +36,11 @@ function Navbar() {
             </div>
             
             <div id="top_libre_nav"> 
-                <Carrito user={USER} cartQuantity={CART} navigationList={NAV_LIST}/>
+                <Carrito 
+                    user={USER} 
+                    cartQuantity={CART} 
+                    navigationList={nav_list}
+                />
             </div>
         </section>
     </div>

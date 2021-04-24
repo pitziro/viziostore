@@ -12,7 +12,6 @@ export const Carrito = (props) => {
         alert(`Hola ${props.user.name}`)
     }
     
-
     return (
         <>
             <ul className="lista_simple">
