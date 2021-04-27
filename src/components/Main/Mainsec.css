@@ -1,49 +1,69 @@
 .item_container {
-  width: 85%;
-  height: 100%;
-  float: right;
-  overflow-y: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 25px;
-  align-content: space-between;
+	width: 85%;
+	height: 100%;
+	float: right;
+	overflow-y: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-top: 25px;
+	align-content: space-between;
 }
 
 .item_container .Tarjeta {
-  width: 25rem;
-  margin: 25px 15px 25px 15px;
-  background-color: rgba(0, 0, 0, 0.55) !important;
+	width: 25rem;
+	margin: 25px 15px 25px 15px;
+	background-color: rgba(138, 238, 147, 0.15) !important;
+}
+
+.item_container .Tarjeta2 {
+	width: 25rem;
+	margin: 25px 15px 25px 15px;
+	background-color: rgba(19, 219, 226, 0.15) !important;
+}
+
+.section_btn {
+	width: 100%;
+}
+
+.section_rams {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-content: space-between;
 }
 
 .icono {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin: 10px 0 10px 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin: 10px 0 10px 0;
 }
 
 .icono input {
-  width: 55px;
-  height: 30px;
-  text-align: center;
+	width: 55px;
+	height: 30px;
+	text-align: center;
 }
 
 .icono #quantity {
-  height: 30px;
-  display: flex;
-  align-items: stretch;
-  align-content: stretch;
+	height: 30px;
+	display: flex;
+	align-items: stretch;
+	align-content: stretch;
 }
 
 .icono #quantity input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none !important;
-  margin: 0;
+	-webkit-appearance: none !important;
+	margin: 0;
 }
 
 .icono #quantity input {
-  -moz-appearance: textfield;
+	-moz-appearance: textfield;
+}
+
+.divrams {
 }
 
 /*
