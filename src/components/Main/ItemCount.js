@@ -27,7 +27,7 @@ const ItemCount = (props) => {
 
     const cartAvailable =  ((isNaN(props.stock)) ? true : false )
 
-    console.log(`Un item ahora -> ${itemQ}`)
+    //console.log(`Un item ahora -> ${itemQ}`)
 
     return (
         <>

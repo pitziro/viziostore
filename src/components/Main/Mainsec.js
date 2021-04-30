@@ -7,6 +7,7 @@ import { Button } from 'react-bootstrap';
 
 function Mainsec() {
 
+    /* Consulta de GPU */
     const [ListaGPU, setListaGPU] = useState(
         [
             {
