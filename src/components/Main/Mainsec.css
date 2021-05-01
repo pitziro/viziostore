@@ -13,7 +13,11 @@
 .item_container .Tarjeta {
 	width: 25rem;
 	margin: 25px 15px 25px 15px;
-	background-color: rgba(138, 238, 147, 0.25) !important;
+	background-color: rgba(138, 238, 147, 0.1) !important;
+}
+
+.item_container .Tarjeta a:hover {
+	color: inherit;
 }
 
 .item_container .Tarjeta2 {
@@ -33,6 +37,7 @@
 	align-content: space-between;
 }
 
+/* JS ItemCount*/
 .icono {
 	display: flex;
 	align-items: center;
@@ -40,8 +45,8 @@
 	margin: 10px 0 10px 0;
 }
 
-.icono input {
-	width: 55px;
+#quantity input {
+	width: 70px;
 	height: 30px;
 	text-align: center;
 }
@@ -53,13 +58,13 @@
 	align-content: stretch;
 }
 
-.icono #quantity input::-webkit-outer-spin-button,
+#quantity input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 	-webkit-appearance: none !important;
 	margin: 0;
 }
 
-.icono #quantity input {
+#quantity input {
 	-moz-appearance: textfield;
 }
 

@@ -3,7 +3,7 @@ import Banner from './Banner';
 import { Carrito } from './Carrito';
 
 import './Navbar.css';
-
+import logo from '../../img/logo_transparente.png'
 
 function Navbar() {
 
@@ -26,7 +26,7 @@ function Navbar() {
         {/* zona logo */}
         <section id="top_logo" >
             <a  className="logo__link" href="index.html">
-                <img src="img/logo_transparente.png" title="VizioZone Home" alt='Home'/>
+                <img src={logo} title="VizioZone Home" alt='Home'/>
             </a>
         </section>
         

@@ -1,0 +1,20 @@
+#zona_bot {
+	width: 90%;
+	margin: auto;
+	height: max-content;
+	position: sticky;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.85);
+	overflow: hidden;
+}
+#zona_bot .links {
+	display: flex;
+	flex-direction: row;
+}
+#zona_bot .redsocial {
+	margin: auto;
+}
+#zona_bot img {
+	height: 40px;
+	margin-right: 1rem;
+}
