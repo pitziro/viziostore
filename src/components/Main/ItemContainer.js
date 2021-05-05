@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import './Mainsec.css';
-import ItemList from './ItemList'
+import React, {useState, useEffect} from 'react'
+import ItemList from './ItemList';
 
-
-function Mainsec() {
-
+function ItemContainer() {
     const [ListaGPU, setListaGPU] = useState([])
     
     useEffect( () => {
@@ -15,8 +12,10 @@ function Mainsec() {
         }, 1000);
     }, []);
     
+
+
     return (
-        <div className='item_container'>
+        <>
             { 
                 ( ListaGPU ? 
                     (ListaGPU.map((i, index) => (
@@ -31,8 +30,8 @@ function Mainsec() {
                     :(<p> Consultando la BD.... </p>)
                 )
             }
-        </div>
+        </>
     )
 }
 
-export default Mainsec
+export default ItemContainer

@@ -1,29 +1,28 @@
 body {
-  width: 100%;
-  height: max-content;
-  margin: auto 0;
-  font-family: "Josefin Sans", sans-serif;
-  color: #ffffff;
-  background-image: url(https://static6.depositphotos.com/1003229/609/v/450/depositphotos_6096843-stock-illustration-circuit-board-vector-background.jpg);
-  background-size: cover;
-  box-sizing: border-box;
+	width: 100%;
+	height: max-content;
+	margin: auto 0;
+	font-family: 'Josefin Sans', sans-serif !important;
+	color: #ffffff !important;
+	background-image: url(https://static6.depositphotos.com/1003229/609/v/450/depositphotos_6096843-stock-illustration-circuit-board-vector-background.jpg);
+	background-size: cover !important;
+	box-sizing: border-box !important;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+	color: inherit !important;
 }
 
 #app {
-  width: 90%;
-  margin: auto;
-  height: inherit;
-  min-height: 1200px;
-  background-color: rgba(0, 0, 0, 0.5);
+	width: 90%;
+	margin: auto;
+	height: inherit;
+	min-height: 1200px;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 #zona_mid {
-  height: 95%;
-  display: flex;
-  clear: both;
+	height: 95%;
+	display: flex;
+	clear: both;
 }

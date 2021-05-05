@@ -68,6 +68,18 @@ input::-webkit-inner-spin-button {
 	-moz-appearance: textfield;
 }
 
+#contenidos {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.grupo_index {
+	margin: 10px;
+	width: 85%;
+	height: 25%;
+}
+
 /*
 .icono svg {
   height: 20px;

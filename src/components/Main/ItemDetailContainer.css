@@ -1,15 +1,7 @@
 .item_detail_container {
 	width: 70%;
 	height: 100%;
-	margin: 50px 0 0 50px;
-	/*
-	float: right;
-	overflow-y: hidden;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-content: space-between;
-	*/
+	margin: 50px 0 0 0;
 }
 
 .item_table table {
@@ -20,4 +12,5 @@
 	text-align: center;
 	height: 25px;
 	margin-top: 25px;
+	margin-bottom: 25px;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Mainsec.css';
-import ItemList from './ItemList'
+import ItemList from '../Main/ItemList'
 
 
 

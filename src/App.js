@@ -1,11 +1,13 @@
 import React from 'react';
-import Navbar from './components/Navbar/Navbar';
-import Leftbar from './components/Leftbar/Leftbar';
-import Mainsec from './components/Main/Mainsec';
-import Footer from './components/Footer/Footer';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import './components/Main/Mainsec.css'
+import Footer from './components/Footer/Footer';
+import Leftbar from './components/Leftbar/Leftbar';
 import ItemDetailContainer from './components/Main/ItemDetailContainer';
+import ItemContainer from './components/Main/ItemContainer'
+import Welcome from './components/Main/Welcome';
+import Navbar from './components/Navbar/Navbar';
 
 
 function App() {
@@ -15,15 +17,17 @@ function App() {
         <Navbar/>
 
         <div id="zona_mid">
-            <Leftbar/>
-            
-            <Switch>
-              <Route exact path="/"> <Mainsec/> </Route>
-              <Route exact path='/detalle/:id'> <ItemDetailContainer/> </Route> 
-            </Switch>
-              
-        </div>
+          <Leftbar/>
 
+          <div className='item_container'>
+              <Switch>
+                <Route exact path="/"> <ItemContainer/> </Route>
+                <Route exact path='/viziostore'> <Welcome/> </Route> 
+                <Route exact path='/detalle/:id'> <ItemDetailContainer/> </Route> 
+              </Switch>
+                
+          </div>
+        </div>
         <Footer/>
       </BrowserRouter>
     </div>
