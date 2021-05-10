@@ -1,10 +1,27 @@
-import React from 'react';
-import { Table } from 'react-bootstrap';
+import React, {useState, useContext } from 'react';
+import { Button, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import ItemCount from './ItemCount';
-
+import {CartContext} from '../../context/CartContext'
 
 function ItemDetail(props) {
+    
+    const [itemQ, setItemQ] = useState(1);       //cambia cada click del + o - 
+    const [stockQ] = useState(props.Almacen);     //cambiara cuando se agrege al carrito, inicia con el JSON
+
+    const cartAvailable =  ((isNaN(props.Almacen)) ? true : false )
+    
+    const {addCartItem} = useContext(CartContext)
+
+    const handleMinusClick = () => {
+        if (!isNaN(stockQ)) {
+            setItemQ( (+itemQ-1<=1) ? 1 : +itemQ-1)
+        }
+    }
+    const handlePlusClick = () => {
+        if (!isNaN(stockQ)) {
+            setItemQ( (+itemQ+1>= stockQ ) ? stockQ : +itemQ+1)
+        }
+    }
 
     return (
         <div className="item_table">
@@ -34,12 +51,17 @@ function ItemDetail(props) {
                 </tbody>
             </Table>
 
-            <ItemCount stock={props.Almacen}/>
+            <span id="quantity">
+                <Button variant="dark" size="sm" onClick={handleMinusClick}> _ </Button>
+                <input type="number" placeholder={itemQ} value={itemQ} onChange={(e) => setItemQ (e.target.value) }/>
+                <Button variant="dark" size="sm" onClick={handlePlusClick}> + </Button>
+            </span>
             
-
+            <Button variant="dark" size="sm" onClick={() => addCartItem(props.id, props.Modelo, itemQ)} disabled={cartAvailable}> 
+                Agregar al carrito</Button>
             
             <div className="div_back"> 
-                <Link to="/"> &lt; Regresar a la lista de productos </Link>
+                <Link to="/viziostore"> &lt; Regresar a la lista de productos </Link>
             </div>
             
         </div>

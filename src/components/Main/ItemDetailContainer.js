@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom';
+import React, { useState, useEffect} from 'react';
 import ItemDetail from './ItemDetail';
+import {useParams} from 'react-router-dom';
+
 import './ItemDetailContainer.css'
 
-const ItemDetailContainer = (props) => {
+
+const ItemDetailContainer = () => {
 
     const [itemSelected, setItemSelected] = useState();
 
-    
     const {id} = useParams();
-    //const {id} = useParams();
+
+
 
     useEffect(() => {
         setTimeout(() => {
-            fetch (`https://608a0c808c8043001757f9b1.mockapi.io/VizioStoreAPI/gpujson/${id}`)
+            fetch (`https://608a0c808c8043001757f9b1.mockapi.io/VizioStoreAPI/bdjson/${id}`)
             .then (response => {return response.json()})
             .then (data => {setItemSelected(data)})
-        }, 1200);
+        }, 250);
+        return() => console.log("cleanup")
     }, []);
 
     

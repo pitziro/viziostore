@@ -9,7 +9,7 @@ function Leftbar() {
             <div className="menu_uno pt-1" > PC Master Race </div>
             <div className="menu_uno "> Ensambles </div>
             <div className="menu_uno "> Consolas & Juegos </div>
-            <div className="menu_uno "> <Link to="/viziostore"/> VizioStore </div>
+            <div className="menu_uno "> <Link to="/viziostore"> VizioStore </Link></div>
         </nav>
     )
 }

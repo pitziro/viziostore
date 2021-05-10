@@ -10,6 +10,27 @@
 	align-content: space-between;
 }
 
+/* Item Container */
+.categorybox {
+	width: 100%;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	align-content: center;
+}
+
+.categorybox .btn_cat {
+	margin: 0 25px 0 25px;
+	text-align: center;
+}
+
+.categorybox2 {
+	width: 100%;
+	display: flex;
+	align-content: center;
+	text-align: center;
+	margin-top: 100px;
+}
 .item_container .Tarjeta {
 	width: 25rem;
 	margin: 25px 15px 25px 15px;
@@ -24,17 +45,6 @@
 	width: 25rem;
 	margin: 25px 15px 25px 15px;
 	background-color: rgba(19, 219, 226, 0.25) !important;
-}
-
-.section_btn {
-	width: 100%;
-}
-
-.section_rams {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-content: space-between;
 }
 
 /* JS ItemCount*/
@@ -68,6 +78,7 @@ input::-webkit-inner-spin-button {
 	-moz-appearance: textfield;
 }
 
+/* WELCOME SITE*/
 #contenidos {
 	display: flex;
 	flex-direction: column;

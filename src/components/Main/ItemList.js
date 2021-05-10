@@ -19,9 +19,6 @@ function ItemList(props) {
                 Stock disponible: {props.Almacen}
             </Card.Footer>
             
-            <div className="icono">
-                {/* <ItemCount stock={props.Almacen}/> */}
-            </div>
         </Card> 
     )
 }

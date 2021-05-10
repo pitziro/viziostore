@@ -46,13 +46,13 @@ export default function Welcome() {
                 </div >
                 
                 
-                <div class="grupo_index d-inline-flex align-items-center">
+                <div className="grupo_index d-inline-flex align-items-center">
                     <Iframe url="https://www.youtube.com/embed/6VUtW2hRD08" width="250" height="200" display="initial" 
                             position="relative" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
                             picture-in-picture; fullscreen"/> 
-                    <div class="card-body ">
-                        <h5 class="titulo-video">Video Comparacion nuevas consolas </h5>
-                        <p class="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fugiat laudantium 
+                    <div className="card-body ">
+                        <h5 className="titulo-video">Video Comparacion nuevas consolas </h5>
+                        <p className="card-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias fugiat laudantium 
                         deserunt nulla, accusamus perferendis magni? Dicta, veniam nihil amet asperiores saepe enim molestias ea 
                         doloremque unde eaque corporis at?</p>
                     </div>

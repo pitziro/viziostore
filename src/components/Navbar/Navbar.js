@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import logo from '../../img/logo_transparente.png';
 import Banner from './Banner';
+import { CartContext } from '../../context/CartContext'
+import { Link } from 'react-router-dom';
 import { Carrito } from './Carrito';
 import './Navbar.css';
 
@@ -13,9 +15,9 @@ function Navbar() {
         avatar : 'https://images.unsplash.com/photo-1618762869108-155c69284f61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80'
     }
 
-    const CART = 2
+    const {qTotalItems} = useContext(CartContext)
 
-    const [nav_list, setNavList] = useState (['Youtube',
+    const [nav_list] = useState (['Youtube',
     'Twitch',
     'VizioTeam',
     'Contacto'])
@@ -25,9 +27,7 @@ function Navbar() {
         
         {/* zona logo */}
         <section id="top_logo" >
-            <a  className="logo__link" href="/">
-                <img src={logo} title="VizioZone Home" alt='Home'/>
-            </a>
+                <Link to="/"> <img src={logo} title="VizioZone Home" alt='Home'/> </Link>
         </section>
         
         <section id="top_libre" >
@@ -38,7 +38,7 @@ function Navbar() {
             <div id="top_libre_nav"> 
                 <Carrito 
                     user={USER} 
-                    cartQuantity={CART} 
+                    cartQuantity={qTotalItems} 
                     navigationList={nav_list}
                 />
             </div>
