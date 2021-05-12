@@ -11,8 +11,6 @@ const ItemDetailContainer = () => {
 
     const {id} = useParams();
 
-
-
     useEffect(() => {
         setTimeout(() => {
             fetch (`https://608a0c808c8043001757f9b1.mockapi.io/VizioStoreAPI/bdjson/${id}`)
@@ -29,6 +27,7 @@ const ItemDetailContainer = () => {
                 <ItemDetail
                     id={itemSelected.id}
                     Modelo={itemSelected.Modelo}
+                    Categoria={itemSelected.Categoria}
                     Fabricante={itemSelected.Fabricante}
                     Marca={itemSelected.Marca}
                     PrecioMN={itemSelected.PrecioMN}

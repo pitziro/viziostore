@@ -4,8 +4,7 @@ import './Mainsec.css'
 
 export default function Welcome() {
     return (
-        <div>
-            <div id="contenidos">
+            <div className="contenidos">
                 
                 <div className="grupo_index d-inline-flex align-items-center">
                         <Iframe url="https://www.youtube.com/embed/6mrJw1owcls" width="250" height="200" display="initial" 
@@ -58,6 +57,5 @@ export default function Welcome() {
                     </div>
                 </div >
             </div>
-        </div>
     )
 }

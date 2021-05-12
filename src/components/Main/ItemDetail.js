@@ -1,7 +1,7 @@
 import React, {useState, useContext } from 'react';
-import { Button, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import {CartContext} from '../../context/CartContext'
+import { Link } from 'react-router-dom';
+import { Button, Table } from 'react-bootstrap';
 
 function ItemDetail(props) {
     
@@ -57,11 +57,11 @@ function ItemDetail(props) {
                 <Button variant="dark" size="sm" onClick={handlePlusClick}> + </Button>
             </span>
             
-            <Button variant="dark" size="sm" onClick={() => addCartItem(props.id, props.Modelo, itemQ)} disabled={cartAvailable}> 
+            <Button variant="dark" size="sm" onClick={() => addCartItem(props.id, props.Modelo, itemQ, props.PrecioMN )} disabled={cartAvailable}> 
                 Agregar al carrito</Button>
             
             <div className="div_back"> 
-                <Link to="/viziostore"> &lt; Regresar a la lista de productos </Link>
+                <Link to='/viziostore'> &lt; Regresar a la lista de productos </Link>
             </div>
             
         </div>

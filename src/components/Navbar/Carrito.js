@@ -1,4 +1,5 @@
 import './Carrito.css'
+import {Link} from 'react-router-dom'
 import cart from '../../png/shoppingcart.png'
 
 export const Carrito = (props) => {
@@ -24,7 +25,7 @@ export const Carrito = (props) => {
 
             <div className='sec_user'>
                 <span className='carrito'>
-                    <img src={cart} alt='cart' onClick={handleClickCart} />
+                    <Link to="/carritolist"> <img src={cart} alt='cart' onClick={handleClickCart}/> </Link>
                     <p>{props.cartQuantity}</p>
                 </span> 
                 <span className='avatar'>
