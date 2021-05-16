@@ -1,5 +1,6 @@
 import removeItem from '../../png/remove_cart2.png'
 import React, {useContext} from 'react'
+import {Link} from 'react-router-dom'
 import {Table, Button} from 'react-bootstrap'
 import {CartContext} from '../../context/CartContext'
 
@@ -13,7 +14,10 @@ function CarritoDetail() {
         <div className="contenidos item_table">
             
             {   (cart.length ===0 ) 
-                ? <p> No tienes items en tu carrito </p>
+                ? ( <>
+                    <p> No tienes items en tu carrito </p>
+                    <Link to="/viziostore" ><p> &lt;&lt; Agrega algo de nuestro variado catálogo </p> </Link>
+                    </>)
                 :
                 
                 /* IMPRIME VISTA DEL CARRITO */
@@ -30,19 +34,25 @@ function CarritoDetail() {
                         </tr>
                     </thead>
                     <tbody>
-                    {
-                    cart.map((i, index) => (
-                        <tr key={index}>
-                            <td style={{textAlign: "center"}}> {index+1} </td>
-                            <td> {i.producto} </td>
-                            <td style={{textAlign: "center"}}> {i.quantity} </td>
-                            <td style={{textAlign: "center"}}> {i.precio} </td>
-                            <td style={{textAlign: "center"}}> {(parseFloat(i.precio)*parseFloat(i.quantity)).toFixed(1)} </td>
-                            <td style={{textAlign: "center"}}>  <img className="icon_remove" src={removeItem} alt='Remove item' onClick={() => removeCartItem(i.itemId)}/>  </td>
+                        { cart.map((i, index) => (
+                            <tr key={index}>
+                                <td style={{textAlign: "center"}}> {index+1} </td>
+                                <td> {i.producto} </td>
+                                <td style={{textAlign: "center"}}> {i.quantity} </td>
+                                <td style={{textAlign: "center"}}> {i.precio} </td>
+                                <td style={{textAlign: "center"}}> {(parseFloat(i.precio)*parseFloat(i.quantity)).toFixed(1)} </td>
+                                <td style={{textAlign: "center"}}>  <img className="icon_remove" src={removeItem} alt='Remove item' onClick={() => removeCartItem(i.itemId)}/>  </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+
+                <Table variant="dark" hover>        
+                    <tbody>
+                        <tr>
+                            <td> Total de la compra : </td>
+                            <td style={{textAlign: "center", width:"15%"}}> { cart.reduce( (t,i) => (t = parseFloat(t)+ parseFloat(i.precio)*i.quantity).toFixed(2), 0)} </td>
                         </tr>
-                        
-                    ))
-                    }
                     </tbody>
                 </Table>
                 

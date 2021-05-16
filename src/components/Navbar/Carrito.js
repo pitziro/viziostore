@@ -5,10 +5,6 @@ import cart from '../../png/shoppingcart.png'
 export const Carrito = (props) => {
     
     /*logica interna*/
-    const handleClickCart = () => {
-        alert ('Aqui salen tus items')
-    }
-
     const handleClickUser = () => {
         alert(`Hola ${props.user.name}`)
     }
@@ -25,7 +21,7 @@ export const Carrito = (props) => {
 
             <div className='sec_user'>
                 <span className='carrito'>
-                    <Link to="/carritolist"> <img src={cart} alt='cart' onClick={handleClickCart}/> </Link>
+                    <Link to="/carritolist"> <img src={cart} alt='cart'/> </Link>
                     <p>{props.cartQuantity}</p>
                 </span> 
                 <span className='avatar'>
