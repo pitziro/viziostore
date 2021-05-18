@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import ItemDetail from './ItemDetail';
 import {useParams} from 'react-router-dom';
-
+import {getFireStore} from '../../firebase/index'
 import './ItemDetailContainer.css'
 
 
@@ -11,15 +11,30 @@ const ItemDetailContainer = () => {
 
     const {id} = useParams();
 
+    /*
     useEffect(() => {
         setTimeout(() => {
             fetch (`https://608a0c808c8043001757f9b1.mockapi.io/VizioStoreAPI/bdjson/${id}`)
             .then (response => {return response.json()})
             .then (data => {setItemSelected(data)})
         }, 250);
-        return() => console.log("cleanup")
+        return() => console.log("cleanup carga detalle item")
     }, []);
+    */
 
+    useEffect( () => {
+        const db = getFireStore()
+        const collectionQuery = db.collection('productos').doc(`${id}`)
+
+        collectionQuery
+        .get()
+        .then (
+            (querySnapshot) => {
+                const data = querySnapshot.data()
+                setItemSelected(data)
+            }) 
+        .catch( (err) => console.log("Firestore error:", err) ) 
+    }, [])
     
     return (
         <div className="item_detail_container">

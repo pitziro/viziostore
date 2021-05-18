@@ -42,7 +42,7 @@ export const CartProvider = ({children}) => {
         : console.log("sin items")
         )
         console.log("cambio items")
-    }, [cart]);
+    }, [cart, qTotalItems]);
 
     
     const pickCategory = (e) => {

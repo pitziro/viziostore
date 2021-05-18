@@ -11,7 +11,7 @@ function ItemList(props) {
                     <Link to={`/detalle/${props.id}`}> {props.Modelo} </Link>
                 </Card.Title>
                 <Card.Subtitle>
-                    {props.PrecioMN}
+                    {props.PrecioMN} {}
                 </Card.Subtitle>
             </Card.Body>
 
