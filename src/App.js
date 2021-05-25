@@ -7,6 +7,7 @@ import ItemContainer from './components/Main/ItemContainer'
 import Footer from './components/Footer/Footer';
 import CarritoDetail from './components/Main/CarritoDetail'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import OrdenDeCompra from './components/Main/OrdenDeCompra'
 import './components/Main/Mainsec.css'
 import './App.css';
 
@@ -26,6 +27,7 @@ function App() {
                 <Route exact path='/viziostore'> <ItemContainer/> </Route> 
                 <Route exact path='/detalle/:id'> <ItemDetailContainer/> </Route> 
                 <Route exact path='/carritolist'> <CarritoDetail/> </Route> 
+                <Route exact path='/ordendecompra'> <OrdenDeCompra/> </Route> 
               </Switch>
                 
           </div>

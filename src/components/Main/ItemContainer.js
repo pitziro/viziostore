@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react'
-import ItemList from './ItemList';
+import ItemList from './ItemList'
 import {ToggleButton, ToggleButtonGroup} from 'react-bootstrap'
 import {CartContext} from '../../context/CartContext'
 import {getFireStore} from '../../firebase/index'
@@ -12,16 +12,6 @@ function ItemContainer() {
 
     const {Category} = useContext(CartContext)
     const {pickCategory} = useContext(CartContext)
-
-    /*
-    useEffect( () => {
-                fetch ('https://608a0c808c8043001757f9b1.mockapi.io/VizioStoreAPI/bdjson')
-                .then (response => {return response.json()})
-                .then (data => {setListaItems(data)})
-            return() => (console.log("Clean Up ItemContainer"))
-    }, []);
-    */
-
 
     // al cargar levanta la base de datos 
     useEffect( () => {

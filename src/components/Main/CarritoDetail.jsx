@@ -1,14 +1,14 @@
-import removeItem from '../../png/remove_cart2.png'
+import removeItemIcon from '../../png/remove_cart2.png'
 import React, {useContext} from 'react'
 import {Link} from 'react-router-dom'
 import {Table, Button} from 'react-bootstrap'
 import {CartContext} from '../../context/CartContext'
 
 
+
 function CarritoDetail() {
 
     const {cart, removeCartItem, cleanCart} = useContext(CartContext)
-    
 
     return (
         <div className="contenidos item_table">
@@ -41,7 +41,7 @@ function CarritoDetail() {
                                 <td style={{textAlign: "center"}}> {i.quantity} </td>
                                 <td style={{textAlign: "center"}}> {i.precio} </td>
                                 <td style={{textAlign: "center"}}> {(parseFloat(i.precio)*parseFloat(i.quantity)).toFixed(1)} </td>
-                                <td style={{textAlign: "center"}}>  <img className="icon_remove" src={removeItem} alt='Remove item' onClick={() => removeCartItem(i.itemId)}/>  </td>
+                                <td style={{textAlign: "center"}}>  <img className="icon_remove" src={removeItemIcon} alt='Remove item' onClick={() => removeCartItem(i.itemId)}/>  </td>
                             </tr>
                         ))}
                     </tbody>
@@ -58,7 +58,7 @@ function CarritoDetail() {
                 
                 <div className="categorybox2">
                     <Button variant="danger" onClick={() => cleanCart()}> Limpiar Carrito </Button>
-                    <Button > Confirmar Compra  </Button>
+                    <Button> <Link to="/ordendecompra"> Confirmar Compra </Link> </Button>
                 </div>
                 </>
             }
@@ -68,4 +68,4 @@ function CarritoDetail() {
     )
 }
 
-export default CarritoDetail
+export default CarritoDetail;
