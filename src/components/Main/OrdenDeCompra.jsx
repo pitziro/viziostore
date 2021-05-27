@@ -1,14 +1,17 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { getFireStore } from '../../firebase/index'
-import { Button, Modal} from 'react-bootstrap'
+import React, {useState, useContext } from 'react';
+import firebase from 'firebase'
 import { Prompt } from 'react-router'
-import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
+import { getFireStore } from '../../firebase/index'
+import { CartContext } from '../../context/CartContext';
+import { Button, Modal } from 'react-bootstrap'
 import './OrdenDeCompra.css';
 
 const OrdenDeCompra = () => {
 
-    const { cart, setCart } = useContext(CartContext);
+    const { cart, cleanCart } = useContext(CartContext);
+
+    const [orderId, setOrderId] = useState('')
 
     const [visibleForm, setvisibleForm] = useState('visible')
     const [showModal, setShowModal] = useState(false);
@@ -49,21 +52,48 @@ const OrdenDeCompra = () => {
             .then((r) => console.log(r)) // siempre me sale undefined,
     }
 
+    // cargo una orden a firestore 
+    const loadOrder = () => {
+        const db =  getFireStore()
+        const orders = db.collection("ordenes") 
+
+        const newOrder = {
+            buyer: form,
+            items: cart,
+            date: firebase.firestore.Timestamp.fromDate(new Date()),
+        }
+
+        orders.add(newOrder).then( ({id}) => {
+            setOrderId(id)
+        })
+        .catch (err => console.log(err))
+
+    }
+
+    const handleHideModal= () => {
+        setTimeout(() => {
+            setShowModal(false)
+            window.open('/','_self')
+        }, 2000);
+    }
 
     const handleAddOrder = (f) => {
-        console.log(f)
-        //updateStock()
-        console.log('actualicé stock')
-        
-        
-        // -- registrar la orden -- //
-        
-        
 
-        // mostrar un modal, limpiar el carrito y salir //
-        setvisibleForm('hidden') 
-        setShowModal(true)
-        setCart([])
+        if (!fieldsOk && cart.length >= 1) {
+            // actualizo Stock
+            updateStock()
+            
+            // -- registrar la orden -- //
+            loadOrder()
+        
+            // mostrar un modal, limpiar el carrito y salir //
+            setvisibleForm('hidden') 
+            setShowModal(true)
+            cleanCart()
+        }
+        else{
+            alert("Los campos aún no estan completos")
+        }
     }
 
     return (
@@ -150,13 +180,13 @@ const OrdenDeCompra = () => {
                     </div>
 
                     
-                    <Modal className='order_modal' show={showModal}  centered>
+                    <Modal className='order_modal' show={showModal} onHide={handleHideModal} centered>
                         <Modal.Header>
                             <Modal.Title> Muchas gracias por tu compra! </Modal.Title>
                         </Modal.Header>
                         <Modal.Body> 
                             Este es tu código de orden autogenerado: 
-                            <h3> 61354scs8cs138sc </h3>
+                            <h3> {orderId} </h3>
                         </Modal.Body>
                         
                         <Modal.Footer>
