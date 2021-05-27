@@ -1,14 +1,19 @@
-import React, {useEffect, useState, useContext} from 'react';
-import { getFireStore} from '../../firebase/index'
-import { Button } from 'react-bootstrap'
+import React, { useEffect, useState, useContext } from 'react';
+import { getFireStore } from '../../firebase/index'
+import { Button, Modal} from 'react-bootstrap'
 import { Prompt } from 'react-router'
 import { CartContext } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
 import './OrdenDeCompra.css';
 
 const OrdenDeCompra = () => {
 
-    const {cart} = useContext(CartContext);
-    
+    const { cart, setCart } = useContext(CartContext);
+
+    const [visibleForm, setvisibleForm] = useState('visible')
+    const [showModal, setShowModal] = useState(false);
+
+
     const [form, setForm] = useState({
         name: '',
         apepat: '',
@@ -21,124 +26,147 @@ const OrdenDeCompra = () => {
 
     // Registra valores del formulario para la orden de compra //
     const handleInputs = (id, value) => {
-        const newForm = {...form, [id]: value}
+        const newForm = { ...form, [id]: value }
         setForm(newForm)
     }
-    
+
 
     //Valida todos los campos completos => Falso si todos llenos //
     const fieldsOk = [form.name, form.apepat, form.apemat, form.celular, form.email, form.numdoc, form.tipodoc].includes('');
-    
-    
+
+
     // actualizacion del stock en firestore //
     const updateStock = () => {
         const db = getFireStore()
         const batch = db.batch()
 
-        cart.forEach( (item) => {
+        cart.forEach((item) => {
             const itemRef = db.collection('productos').doc(item.itemId)
-            batch.update(itemRef, {Almacen: parseInt(item.stock) - parseInt(item.quantity) })
+            batch.update(itemRef, { Almacen: parseInt(item.stock) - parseInt(item.quantity) })
         })
 
         batch.commit()
-        .then ( (r) => console.log(r)) // siempre me sale undefined,
+            .then((r) => console.log(r)) // siempre me sale undefined,
     }
 
-    
+
     const handleAddOrder = (f) => {
         console.log(f)
-        updateStock()
+        //updateStock()
         console.log('actualicé stock')
+        
+        
+        // -- registrar la orden -- //
+        
+        
 
-        // registrar la orden 
-
-        // mostrar un modal y salir 
+        // mostrar un modal, limpiar el carrito y salir //
+        setvisibleForm('hidden') 
+        setShowModal(true)
+        setCart([])
     }
 
-    return ( 
+    return (
         <div>
-        {
-        <>   
-        <Prompt
-            when={ (!fieldsOk && cart.length >= 1)}
-            message="Todavia no has registrado tu orden!"
-        />
-        
-        <h2> Genial! Ahora solo completa tus datos </h2>
-        
-        <form id="form_contacto">
-            <table>
-            <tbody>
-                <tr>
-                    <td className="td_label">
-                        <label > Nombre </label> 
-                    </td>
-                    <td className="border-top-0">
-                        <input type="text"  id="name" onChange={({target}) => handleInputs(target.id, target.value)}/>
-                    </td>
-                </tr>
+            {
+                <div className="form_" style={{visibility:visibleForm}}>
+                    <Prompt
+                        when={(!fieldsOk && cart.length >= 1)}
+                        message="Todavia no has registrado tu orden!"
+                    />
 
-                <tr>
-                    <td className="td_label" >
-                        <label> Apellido Paterno </label> 
-                    </td>
-                    <td >
-                        <input type="text" id="apepat" onChange={({target}) => handleInputs(target.id, target.value)}/>
-                    </td>
-                </tr>
+                    <h2> Genial! Ahora solo completa tus datos </h2>
 
-                <tr>
-                    <td className="td_label" >
-                        <label > Apellido Materno </label>  
-                    </td>
-                    <td>
-                        <input type="text" id="apemat" onChange={({target}) => handleInputs(target.id, target.value)}/>
-                    </td>
-                </tr>
+                    <form id="form_contacto" >
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td className="td_label">
+                                        <label > Nombre </label>
+                                    </td>
+                                    <td className="border-top-0">
+                                        <input type="text" id="name" onChange={({ target }) => handleInputs(target.id, target.value)} />
+                                    </td>
+                                </tr>
 
-                <tr>
-                    <td className="td_label" >
-                        <label > Documento Identidad </label>  
-                    </td>
-                    <td>
-                        <select  id="tipodoc" onChange={({target}) => handleInputs(target.id, target.value)}>
-                            <option defaultValue="none" hidden>  </option>
-                            <option value="DNI"> DNI </option>
-                            <option value="RUC"> RUC </option>
-                        </select>
-                        <input type="text" id="numdoc" onChange={({target}) => handleInputs(target.id, target.value)}/>
-                    </td>
-                </tr>
+                                <tr>
+                                    <td className="td_label" >
+                                        <label> Apellido Paterno </label>
+                                    </td>
+                                    <td >
+                                        <input type="text" id="apepat" onChange={({ target }) => handleInputs(target.id, target.value)} />
+                                    </td>
+                                </tr>
 
-                <tr>
-                    <td className="td_label" >
-                        <label> Email </label>
-                    </td>
-                    <td >
-                        <input type="text" id="email" onChange={({target}) => handleInputs(target.id, target.value)}/> 
-                    </td>
-                </tr>
+                                <tr>
+                                    <td className="td_label" >
+                                        <label > Apellido Materno </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="apemat" onChange={({ target }) => handleInputs(target.id, target.value)} />
+                                    </td>
+                                </tr>
 
-                <tr>
-                    <td  className="td_label" >
-                        <label> Número celular </label>
-                    </td>
-                    <td >
-                        <input type="text" id="celular" onChange={({target}) => handleInputs(target.id, target.value)}/> 
-                    </td>
-                </tr>
-            
-            </tbody>
-            </table>
-        </form>
-    
-        <div>
-            <h2> 
-            <Button variant="primary" onClick={() => handleAddOrder(form)}>Finalizar Orden</Button>
-            </h2>
-        </div>
-        </>
-        }
+                                <tr>
+                                    <td className="td_label" >
+                                        <label > Documento Identidad </label>
+                                    </td>
+                                    <td>
+                                        <select id="tipodoc" onChange={({ target }) => handleInputs(target.id, target.value)}>
+                                            <option defaultValue="none" hidden>  </option>
+                                            <option value="DNI"> DNI </option>
+                                            <option value="RUC"> RUC </option>
+                                        </select>
+                                        <input type="text" id="numdoc" onChange={({ target }) => handleInputs(target.id, target.value)} />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td className="td_label" >
+                                        <label> Email </label>
+                                    </td>
+                                    <td >
+                                        <input type="text" id="email" onChange={({ target }) => handleInputs(target.id, target.value)} />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td className="td_label" >
+                                        <label> Número celular </label>
+                                    </td>
+                                    <td >
+                                        <input type="text" id="celular" onChange={({ target }) => handleInputs(target.id, target.value)} />
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </form>
+
+                    <div>
+                        <h2>
+                            <Button type="reset"variant="primary" onClick={() => handleAddOrder(form)}>Finalizar Orden</Button>
+                        </h2>
+                    </div>
+
+                    
+                    <Modal className='order_modal' show={showModal}  centered>
+                        <Modal.Header>
+                            <Modal.Title> Muchas gracias por tu compra! </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body> 
+                            Este es tu código de orden autogenerado: 
+                            <h3> 61354scs8cs138sc </h3>
+                        </Modal.Body>
+                        
+                        <Modal.Footer>
+                            <Link to="/"><Button variant="primary"> Regresar al home </Button></Link>
+                        </Modal.Footer>
+                    </Modal>
+
+                
+                </div>
+            }
         </div>
     );
 }
