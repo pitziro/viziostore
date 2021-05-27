@@ -1,68 +1,142 @@
-import React, {useContext} from 'react';
-import {CompraContext} from '../../context/CompraContext';
-import {Form, Col, Button} from 'react-bootstrap';
+import React, {useEffect, useState, useContext} from 'react';
+import { getFireStore} from '../../firebase/index'
+import { Button } from 'react-bootstrap'
+import { Prompt } from 'react-router'
+import { CartContext } from '../../context/CartContext';
 import './OrdenDeCompra.css';
 
 const OrdenDeCompra = () => {
 
-    const {configOrder} = useContext(CompraContext);
+    const {cart} = useContext(CartContext);
     
+    const [form, setForm] = useState({
+        name: '',
+        apepat: '',
+        apemat: '',
+        tipodoc: '',
+        numdoc: '',
+        email: '',
+        celular: ''
+    })
+
+    // Registra valores del formulario para la orden de compra //
+    const handleInputs = (id, value) => {
+        const newForm = {...form, [id]: value}
+        setForm(newForm)
+    }
+    
+
+    //Valida todos los campos completos => Falso si todos llenos //
+    const fieldsOk = [form.name, form.apepat, form.apemat, form.celular, form.email, form.numdoc, form.tipodoc].includes('');
+    
+    
+    // actualizacion del stock en firestore //
+    const updateStock = () => {
+        const db = getFireStore()
+        const batch = db.batch()
+
+        cart.forEach( (item) => {
+            const itemRef = db.collection('productos').doc(item.itemId)
+            batch.update(itemRef, {Almacen: parseInt(item.stock) - parseInt(item.quantity) })
+        })
+
+        batch.commit()
+        .then ( (r) => console.log(r)) // siempre me sale undefined,
+    }
+
+    
+    const handleAddOrder = (f) => {
+        console.log(f)
+        updateStock()
+        console.log('actualicé stock')
+
+        // registrar la orden 
+
+        // mostrar un modal y salir 
+    }
+
     return ( 
         <div>
         {
         <>   
-            <h2> Genial! Ahora solo completa tus datos </h2>
-            
-            <Form>
-                <Form.Row>
-                    <Form.Group as={Col} controlId="formName">
-                        <Form.Label> Nombre Completo </Form.Label>
-                        <Form.Control type="text" placeholder="Speedy Gonzales" />
-                    </Form.Group>
-
-                    <Form.Group as={Col} id="formEmail">
-                        <Form.Label> Correo </Form.Label>
-                        <Form.Control type="email" placeholder="speed.g@gmail.com" />
-                    </Form.Group>
-                </Form.Row>
-
-                <Form.Row>
-                    <Form.Group as={Col} id="formTipoDoc">
-                        <Form.Label> Tipo Documento </Form.Label>
-                        <Form.Control as="select" >
-                            <option> DNI</option>
-                            <option> RUC </option>
-                        </Form.Control>
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="formNumDoc">
-                        <Form.Label>  Documento </Form.Label>
-                        <Form.Control type="text" placeholder="44556677" />
-                    </Form.Group>
-                </Form.Row>
-
-
-                <Form.Group controlId="formTelefono">
-                    <Form.Label> Telefono de Contacto </Form.Label>
-                    <Form.Control placeholder="+51 999666333" />
-                </Form.Group>
-
-                <Form.Group controlId="formDireccion">
-                    <Form.Label> Direccion de entrega </Form.Label>
-                    <Form.Control placeholder="Ej. Av. Javier Prado 1500 Dpto 1896 " />
-                </Form.Group>
-
-            </Form>
+        <Prompt
+            when={ (!fieldsOk && cart.length >= 1)}
+            message="Todavia no has registrado tu orden!"
+        />
         
-            
-            <Button variant="primary" onClick={() => configOrder()}>
-                Finalizar Orden
-            </Button>
-            
+        <h2> Genial! Ahora solo completa tus datos </h2>
+        
+        <form id="form_contacto">
+            <table>
+            <tbody>
+                <tr>
+                    <td className="td_label">
+                        <label > Nombre </label> 
+                    </td>
+                    <td className="border-top-0">
+                        <input type="text"  id="name" onChange={({target}) => handleInputs(target.id, target.value)}/>
+                    </td>
+                </tr>
 
-            <div>
-                <h2> </h2>
-            </div>
+                <tr>
+                    <td className="td_label" >
+                        <label> Apellido Paterno </label> 
+                    </td>
+                    <td >
+                        <input type="text" id="apepat" onChange={({target}) => handleInputs(target.id, target.value)}/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td className="td_label" >
+                        <label > Apellido Materno </label>  
+                    </td>
+                    <td>
+                        <input type="text" id="apemat" onChange={({target}) => handleInputs(target.id, target.value)}/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td className="td_label" >
+                        <label > Documento Identidad </label>  
+                    </td>
+                    <td>
+                        <select  id="tipodoc" onChange={({target}) => handleInputs(target.id, target.value)}>
+                            <option defaultValue="none" hidden>  </option>
+                            <option value="DNI"> DNI </option>
+                            <option value="RUC"> RUC </option>
+                        </select>
+                        <input type="text" id="numdoc" onChange={({target}) => handleInputs(target.id, target.value)}/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td className="td_label" >
+                        <label> Email </label>
+                    </td>
+                    <td >
+                        <input type="text" id="email" onChange={({target}) => handleInputs(target.id, target.value)}/> 
+                    </td>
+                </tr>
+
+                <tr>
+                    <td  className="td_label" >
+                        <label> Número celular </label>
+                    </td>
+                    <td >
+                        <input type="text" id="celular" onChange={({target}) => handleInputs(target.id, target.value)}/> 
+                    </td>
+                </tr>
+            
+            </tbody>
+            </table>
+        </form>
+    
+        <div>
+            <h2> 
+            <Button variant="primary" onClick={() => handleAddOrder(form)}>Finalizar Orden</Button>
+            </h2>
+        </div>
         </>
         }
         </div>

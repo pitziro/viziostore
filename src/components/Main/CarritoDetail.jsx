@@ -8,7 +8,7 @@ import {CartContext} from '../../context/CartContext'
 
 function CarritoDetail() {
 
-    const {cart, removeCartItem, cleanCart} = useContext(CartContext)
+    const {cart, removeCartItem, cleanCart, totalImporte} = useContext(CartContext)
 
     return (
         <div className="contenidos item_table">
@@ -51,7 +51,7 @@ function CarritoDetail() {
                     <tbody>
                         <tr>
                             <td> Total de la compra : </td>
-                            <td style={{textAlign: "center", width:"15%"}}> { cart.reduce( (t,i) => (t = parseFloat(t)+ parseFloat(i.precio)*i.quantity).toFixed(2), 0)} </td>
+                            <td style={{textAlign: "center", width:"15%"}}> {totalImporte.toFixed(2)} </td>
                         </tr>
                     </tbody>
                 </Table>

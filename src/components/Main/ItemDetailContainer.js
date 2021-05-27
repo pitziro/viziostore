@@ -33,14 +33,14 @@ const ItemDetailContainer = () => {
                 const data = querySnapshot.data()
                 setItemSelected(data)
             }) 
-        .catch( (err) => console.log("Firestore error:", err) ) 
+        .catch( (err) => console.log("Firestore error:", err) )
     }, [])
-    
+
     return (
         <div className="item_detail_container">
             {itemSelected ? 
                 <ItemDetail
-                    id={itemSelected.id}
+                    id={id}
                     Modelo={itemSelected.Modelo}
                     Categoria={itemSelected.Categoria}
                     Fabricante={itemSelected.Fabricante}

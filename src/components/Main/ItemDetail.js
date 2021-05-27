@@ -57,7 +57,7 @@ function ItemDetail(props) {
                 <Button variant="dark" size="sm" onClick={handlePlusClick}> + </Button>
             </span>
             
-            <Button variant="dark" size="sm" onClick={() => addCartItem(props.id, props.Modelo, itemQ, props.PrecioMN )} disabled={cartAvailable}> 
+            <Button variant="dark" size="sm" onClick={() => addCartItem(props.id, props.Modelo, itemQ, props.PrecioMN, props.Almacen)} disabled={cartAvailable}> 
                 Agregar al carrito</Button>
             
             <div className="div_back"> 

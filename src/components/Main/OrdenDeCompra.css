@@ -2,6 +2,12 @@ h2 {
 	margin: 50px 0 100px 0;
 }
 
-.formColumn {
-	color: red;
+.td_label {
+	margin-right: 25px;
+	padding-right: 50px;
+}
+
+#numdoc {
+	width: 124px;
+	margin-left: 15px;
 }
