@@ -27,10 +27,37 @@ const OrdenDeCompra = () => {
         celular: ''
     })
 
+
+    const validaNumeroMovil = (argNumero) => {
+        let regex_fono = /[0-9]/;
+        if (argNumero.match(regex_fono)) { return true }
+        else return false
+    } 
+    
+    const validaLetra = (argLetra) => {
+        let regex_alfab = /[A-Za-z\s]/;
+        if (argLetra.match(regex_alfab)) {return true } 
+        else return false 
+    } 
+    
     // Registra valores del formulario para la orden de compra //
-    const handleInputs = (id, value) => {
-        const newForm = { ...form, [id]: value }
-        setForm(newForm)
+    const handleInputs = (e) => {
+        let id = e.target.id
+        let value  = e.key
+
+        if ( 
+            (['name','apepat','apemat'].includes(id) && validaLetra(value)) || 
+            ( ['celular','numdoc'].includes(id) && validaNumeroMovil(value)) 
+            )  
+        {
+            const newForm = { ...form, [id]: value }
+            setForm(newForm)
+        }
+        else {
+            e.preventDefault() 
+            console.log("el valor no es valido")
+            
+        }
     }
 
 
@@ -105,7 +132,7 @@ const OrdenDeCompra = () => {
                         message="Todavia no has registrado tu orden!"
                     />
 
-                    <h2> Genial! Ahora solo completa tus datos </h2>
+                    <h2> Genial! Ahora sólo completa tus datos </h2>
 
                     <form id="form_contacto" >
                         <table>
@@ -115,7 +142,7 @@ const OrdenDeCompra = () => {
                                         <label > Nombre </label>
                                     </td>
                                     <td className="border-top-0">
-                                        <input type="text" id="name" onChange={({ target }) => handleInputs(target.id, target.value)} />
+                                        <input type="text" id="name" onKeyPress={(e) => handleInputs(e)} />
                                     </td>
                                 </tr>
 
@@ -124,7 +151,7 @@ const OrdenDeCompra = () => {
                                         <label> Apellido Paterno </label>
                                     </td>
                                     <td >
-                                        <input type="text" id="apepat" onChange={({ target }) => handleInputs(target.id, target.value)} />
+                                        <input type="text" id="apepat" onKeyPress={(e) => handleInputs(e)} />
                                     </td>
                                 </tr>
 
@@ -133,7 +160,7 @@ const OrdenDeCompra = () => {
                                         <label > Apellido Materno </label>
                                     </td>
                                     <td>
-                                        <input type="text" id="apemat" onChange={({ target }) => handleInputs(target.id, target.value)} />
+                                        <input type="text" id="apemat" onKeyPress={(e) => handleInputs(e)} />
                                     </td>
                                 </tr>
 
@@ -142,12 +169,12 @@ const OrdenDeCompra = () => {
                                         <label > Documento Identidad </label>
                                     </td>
                                     <td>
-                                        <select id="tipodoc" onChange={({ target }) => handleInputs(target.id, target.value)}>
+                                        <select id="tipodoc" >
                                             <option defaultValue="none" hidden>  </option>
                                             <option value="DNI"> DNI </option>
                                             <option value="RUC"> RUC </option>
                                         </select>
-                                        <input type="text" id="numdoc" onChange={({ target }) => handleInputs(target.id, target.value)} />
+                                        <input type="text" id="numdoc" onKeyPress={(e) => handleInputs(e)} />
                                     </td>
                                 </tr>
 
@@ -156,7 +183,7 @@ const OrdenDeCompra = () => {
                                         <label> Email </label>
                                     </td>
                                     <td >
-                                        <input type="text" id="email" onChange={({ target }) => handleInputs(target.id, target.value)} />
+                                        <input type="text" id="email"  />
                                     </td>
                                 </tr>
 
@@ -165,15 +192,17 @@ const OrdenDeCompra = () => {
                                         <label> Número celular </label>
                                     </td>
                                     <td >
-                                        <input type="text" id="celular" onChange={({ target }) => handleInputs(target.id, target.value)} />
+                                        <input type="text" id="celular" onKeyPress={(e) => handleInputs(e)} />
                                     </td>
                                 </tr>
 
                             </tbody>
                         </table>
                     </form>
-
-                    <div>
+                    
+                    
+                    <div className="form_order">
+                        <span className="comment"> * Todos los campos son obligatorios </span>
                         <h2>
                             <Button type="reset"variant="primary" onClick={() => handleAddOrder(form)}>Finalizar Orden</Button>
                         </h2>
