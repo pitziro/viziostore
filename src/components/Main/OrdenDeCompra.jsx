@@ -219,7 +219,7 @@ const OrdenDeCompra = () => {
                         </Modal.Body>
                         
                         <Modal.Footer>
-                            <Link to="/"><Button variant="primary"> Regresar al home </Button></Link>
+                            <Link to="/Home"><Button variant="primary"> Regresar al home </Button></Link>
                         </Modal.Footer>
                     </Modal>
 

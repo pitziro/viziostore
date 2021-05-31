@@ -16,7 +16,7 @@ function CarritoDetail() {
             {   (cart.length ===0 ) 
                 ? ( <>
                     <p> No tienes items en tu carrito </p>
-                    <Link to="/viziostore" ><p> &lt;&lt; Agrega algo de nuestro variado catálogo </p> </Link>
+                    <Link to="/tienda" ><p> &lt;&lt; Agrega algo de nuestro variado catálogo </p> </Link>
                     </>)
                 :
                 

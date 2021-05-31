@@ -27,7 +27,7 @@ function Navbar() {
         
         {/* zona logo */}
         <section id="top_logo" >
-                <Link to="/"> <img src={logo} title="VizioZone Home" alt='Home'/> </Link>
+                <Link to="/Home"> <img src={logo} title="VizioZone Home" alt='Home'/> </Link>
         </section>
         
         <section id="top_libre" >

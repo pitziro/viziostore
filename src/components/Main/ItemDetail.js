@@ -61,7 +61,7 @@ function ItemDetail(props) {
                 Agregar al carrito</Button>
             
             <div className="div_back"> 
-                <Link to='/viziostore'> &lt; Regresar a la lista de productos </Link>
+                <Link to='/tienda'> &lt; Regresar a la lista de productos </Link>
             </div>
             
         </div>
