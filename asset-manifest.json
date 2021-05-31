@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/viziostore/static/css/main.cc05747d.chunk.css",
+    "main.js": "/viziostore/static/js/main.f82ab019.chunk.js",
+    "main.js.map": "/viziostore/static/js/main.f82ab019.chunk.js.map",
+    "runtime-main.js": "/viziostore/static/js/runtime-main.b403ab12.js",
+    "runtime-main.js.map": "/viziostore/static/js/runtime-main.b403ab12.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/viziostore/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.b1a38e94.chunk.js": "/viziostore/static/js/2.b1a38e94.chunk.js",
+    "static/js/2.b1a38e94.chunk.js.map": "/viziostore/static/js/2.b1a38e94.chunk.js.map",
+    "index.html": "/viziostore/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/viziostore/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.cc05747d.chunk.css.map": "/viziostore/static/css/main.cc05747d.chunk.css.map",
+    "static/js/2.b1a38e94.chunk.js.LICENSE.txt": "/viziostore/static/js/2.b1a38e94.chunk.js.LICENSE.txt",
+    "static/media/banner1.0947f0e5.jpg": "/viziostore/static/media/banner1.0947f0e5.jpg",
+    "static/media/banner2.7a70e166.jpg": "/viziostore/static/media/banner2.7a70e166.jpg",
+    "static/media/banner3.e60c6937.jpg": "/viziostore/static/media/banner3.e60c6937.jpg",
+    "static/media/banner4.5d4f5bf7.jpg": "/viziostore/static/media/banner4.5d4f5bf7.jpg",
+    "static/media/logo_transparente.fa412406.png": "/viziostore/static/media/logo_transparente.fa412406.png",
+    "static/media/shoppingcart.81623266.png": "/viziostore/static/media/shoppingcart.81623266.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b403ab12.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.b1a38e94.chunk.js",
+    "static/css/main.cc05747d.chunk.css",
+    "static/js/main.f82ab019.chunk.js"
+  ]
+}
