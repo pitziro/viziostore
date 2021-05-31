@@ -8,7 +8,7 @@ Viziostore propone ser una tienda de componentes de computadora especializados. 
 
 Se encuentra implementada la visualización del carrito para poder eliminar algún producto, ver los costos preliminares o limpiar directamente el total de la proforma.
 
-![store02](https://i.ibb.co/XXLb3rF/viziostore02.png)
+![store02](https://i.ibb.co/K6hXLpV/viziostore02.png)
 
 Tanto el proceso de selección de productos, como la generación de la orden de compra dependen de una conexión a la base datos creada en Firestore (los datos de la conexión se encuentran almacenados en un archivo .env)
 
