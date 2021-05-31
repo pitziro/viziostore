@@ -1,13 +1,14 @@
 import firebase from 'firebase'
 
 const app = firebase.initializeApp ({
-    apiKey: "AIzaSyB4mGAvdbg9h1lyw9rBNUnTLU6NV6enS-c",
-    authDomain: "viziostore-65623.firebaseapp.com",
-    projectId: "viziostore-65623",
-    storageBucket: "viziostore-65623.appspot.com",
-    messagingSenderId: "66487927863",
-    appId: "1:66487927863:web:35aa0059d62e81d61d6bb2",
-    measurementId: "G-SEFDY2EZ76"
+    apiKey: process.env.REACT_APP_APIKEY,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASEURL,
+    projectId:  process.env.REACT_APP_PROJECTID,
+    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+    appId: process.env.REACT_APP_APIID,
+    measurementId:  process.env.REACT_APP_MEASUREMENTID
 })
 
 export const getFirebase = () => app

@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Bienvenido al proyecto Vizistore
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto esta basado en REACT JS y es la continuación de su primera versión realizado con JS puro [Viziozone ](https://github.com/pitziro/Viziozone).
 
-## Available Scripts
+Viziostore propone ser una tienda de componentes de computadora especializados. Se dividen estos en categorias y puede realizarse una selección agregando al carrito de compras y generando una orden de compra para cerrar el proceso.
 
-In the project directory, you can run:
+![store01](https://ibb.co/LgWQcQC)
 
-### `npm start`
+Se encuentra implementada la visualización del carrito para poder eliminar algun producto, ver los costos preliminares o limpiar directamente el total de la proforma.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![store02](https://ibb.co/XXLb3rF)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Tanto el proceso de selección de productos, como la generación de la orden de compra dependen de una conexión a la base datos creada en Firestore (los datos de la conexion se encuentran almacenados en un archivo .env)
 
-### `npm test`
+![store03](https://ibb.co/LgWQcQC)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Clonar el proyecto
 
-### `npm run build`
+Para clonar el proyecto, se debe copiar el URL del proyecto y clonar en el repositorio local mediante el comando git clone [URL] (https://github.com/pitziro/viziostore.git)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Información del proyecto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Para ejecutar el proyecto de forma local, se debe ejecutar el comando `npm start`. Esto abrirá automaticamente el navegador por defecto en la dirección [http://localhost:3000](http://localhost:3000) (el servidor deberá mantenerse abierto para poder ver los cambios efectuados).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Pre Requisitos
 
-### `npm run eject`
+Al igual que resto de proyectos realizados en REACT JS, para trabajar sobre el proyecto Viziostore es necesario tener instalado NPM y NODE.JS, asi como un editor de código como Visual Studio Code (recomendado), Sublime o Atom.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Principales dependencias
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+En la ejecución de Viziostore, se han implementado funcionalidades que dependen de:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- bootstrap
+- firebase
+- react-dom
+- react-router-dom
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Algunos otros módulos están instalados, pero no son utilizados en las últimas versiones del proyecto.
 
-## Learn More
+## Autoría
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+El proyeto ha sido creado como parte del curso de React JS de la plataforma Coderhouse, y es complemente original y propiedad de Manuel Sarmiento (https://twitter.com/pitziro)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Para cualquier colaboración o uso de código, por favor pónte en contacto conmigo.
