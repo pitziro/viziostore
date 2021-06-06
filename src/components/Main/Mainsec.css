@@ -33,9 +33,9 @@
 	margin: 50px 0 50px 0;
 }
 .item_container .Tarjeta {
-	width: 25rem;
+	width: 18rem;
 	margin: 25px 15px 25px 15px;
-	background-color: rgba(138, 238, 147, 0.1) !important;
+	background-color: rgba(0, 0, 0, 0.55) !important;
 }
 
 .item_container .Tarjeta a:hover {

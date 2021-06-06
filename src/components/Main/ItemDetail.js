@@ -24,47 +24,54 @@ function ItemDetail(props) {
     }
 
     return (
-        <div className="item_table">
-            <Table  variant="dark" hover>
-                <tbody>
-                    <tr>
-                        <td>Fabricante : </td>
-                        <td> {props.Fabricante}</td>
-                    </tr>
-                    <tr>
-                        <td>Marca : </td>
-                        <td> {props.Marca}</td>
-                    </tr>
-                    <tr>
-                        <td>Modelo : </td>
-                        <td> {props.Modelo}</td>
-                    </tr>
-                    <tr>
-                        <td>PrecioMN : </td>
-                        <td> {props.PrecioMN}</td>
-                    </tr>
-                    <tr>
-                        <td> Stock actual : </td>
-                        <td> {props.Almacen}</td>
-                    </tr>
-
-                </tbody>
-            </Table>
-
-            <span id="quantity">
-                <Button variant="dark" size="sm" onClick={handleMinusClick}> _ </Button>
-                <input type="number" placeholder={itemQ} value={itemQ} onChange={(e) => setItemQ (e.target.value) }/>
-                <Button variant="dark" size="sm" onClick={handlePlusClick}> + </Button>
-            </span>
-            
-            <Button variant="dark" size="sm" onClick={() => addCartItem(props.id, props.Modelo, itemQ, props.PrecioMN, props.Almacen)} disabled={cartAvailable}> 
-                Agregar al carrito</Button>
-            
-            <div className="div_back"> 
-                <Link to='/tienda'> &lt; Regresar a la lista de productos </Link>
+        <div className="contenedor_detalleproduct">
+            <div className="detalleimg">
+                <img id="imgproducto" src={props.urlFuente} alt="imagen referencial" />
             </div>
-            
+
+            <div className="item_table">
+                <Table variant="dark" hover>
+                    <tbody>
+                        <tr>
+                            <td className="index_td">Fabricante : </td>
+                            <td> {props.Fabricante}</td>
+                        </tr>
+                        <tr>
+                            <td className="index_td">Marca : </td>
+                            <td> {props.Marca}</td>
+                        </tr>
+                        <tr>
+                            <td className="index_td">Modelo : </td>
+                            <td> <Link to=""> {props.Modelo} </Link> </td>
+                        </tr>
+                        <tr>
+                            <td className="index_td">PrecioMN : </td>
+                            <td> {props.PrecioMN}</td>
+                        </tr>
+                        <tr>
+                            <td className="index_td"> Stock actual : </td>
+                            <td> {props.Almacen}</td>
+                        </tr>
+                    </tbody>
+                </Table>
+
+                <span id="quantity">
+                    <Button variant="dark" size="sm" onClick={handleMinusClick}> _ </Button>
+                    <input type="number" placeholder={itemQ} value={itemQ} onChange={(e) => setItemQ (e.target.value) }/>
+                    <Button variant="dark" size="sm" onClick={handlePlusClick}> + </Button>
+                </span>
+                
+                <Button variant="dark" size="sm" onClick={() => addCartItem(props.id, props.Modelo, itemQ, props.PrecioMN, props.Almacen)} disabled={cartAvailable}> 
+                    Agregar al carrito</Button>
+                
+                <div className="div_back"> 
+                    <Link to='/tienda'> &lt; Regresar a la lista de productos </Link>
+                </div>
+                
+            </div>
         </div>
+
+        
     )
 }
 

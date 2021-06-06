@@ -17,17 +17,14 @@ function Navbar() {
 
     const {qTotalItems} = useContext(CartContext)
 
-    const [nav_list] = useState (['Youtube',
-    'Twitch',
-    'VizioTeam',
-    'Contacto'])
+    const [nav_list] = useState (['Youtube','Twitch','VizioTeam','Contacto'])
 
     return (
     <div id="zona_top">
         
         {/* zona logo */}
         <section id="top_logo" >
-                <Link to="/viziostore"> <img src={logo} title="VizioZone Home" alt='Home'/> </Link>
+                <Link to="/"> <img src={logo} title="VizioZone Home" alt='Home'/> </Link>
         </section>
         
         <section id="top_libre" >

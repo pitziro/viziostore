@@ -47,6 +47,7 @@ const ItemDetailContainer = () => {
                     Marca={itemSelected.Marca}
                     PrecioMN={itemSelected.PrecioMN}
                     Almacen={itemSelected.Almacen}
+                    urlFuente={itemSelected.urlFuente}
                 />
                 : (<p> Consultando por tu producto.... </p>)
             }

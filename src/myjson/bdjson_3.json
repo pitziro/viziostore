@@ -1,19 +1,5 @@
-
-const firebase = require("firebase");
-// Required for side-effects
-require("firebase/firestore");
-
-// Initialize Cloud Firestore through Firebase
-firebase.initializeApp({
-    apiKey: "AIzaSyB4mGAvdbg9h1lyw9rBNUnTLU6NV6enS-c",
-    authDomain: "viziostore-65623.firebaseapp.com",
-    projectId: "viziostore-65623"
-});
-
-var db = firebase.firestore();
-
-var productos =[
-    {
+[
+  {
     "Categoria": "gpu",
     "Fabricante": "NVIDIA",
     "Marca": "ASUS",
@@ -22,8 +8,8 @@ var productos =[
     "PrecioME": 699,
     "PrecioMN": 2572.32,
     "urlFuente": "https://cyccomputer.pe/34731-large_default/asus-geforce-rtx-3070-8gb-gddr6-256bits-ko-oc-pnko-rtx3070-o8g-gaming.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "gpu",
     "Fabricante": "NVIDIA",
     "Marca": "MSI",
@@ -32,8 +18,8 @@ var productos =[
     "PrecioME": 749,
     "PrecioMN": 2756.32,
     "urlFuente": "https://asset.msi.com/resize/image/global/product/product_1606829537a7c1043ecae4c427658234e19dcdf1e5.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png"
-    },
-    {
+  },
+  {
     "Categoria": "gpu",
     "Fabricante": "NVIDIA",
     "Marca": "MSI",
@@ -42,8 +28,8 @@ var productos =[
     "PrecioME": 899,
     "PrecioMN": 3308.32,
     "urlFuente": "https://www.sercoplus.com/18606-large_default/vga-msi-nvidia-rtx-3070-gaming-x-trio-8g.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "gpu",
     "Fabricante": "AMD",
     "Marca": "MSI",
@@ -52,8 +38,8 @@ var productos =[
     "PrecioME": 389,
     "PrecioMN": 1431.52,
     "urlFuente": "https://www.asus.com/media/global/products/fkr8blxdwrptdxeu/P_setting_xxx_0_90_end_500.png"
-    },
-    {
+  },
+  {
     "Categoria": "gpu",
     "Fabricante": "AMD",
     "Marca": "ASROCK",
@@ -62,8 +48,8 @@ var productos =[
     "PrecioME": 398,
     "PrecioMN": 1464.64,
     "urlFuente": "https://cyccomputer.pe/32599-large_default/asrock-radeon-rx-5600-xt-6gb-gddr6-192-bits-challenger-oc-pn90-ga1xzz-00uanf.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "gpu",
     "Fabricante": "AMD",
     "Marca": "ASUS",
@@ -72,8 +58,8 @@ var productos =[
     "PrecioME": 399,
     "PrecioMN": 1468.32,
     "urlFuente": "https://http2.mlstatic.com/D_NQ_NP_2X_826644-MPE44174979714_112020-F.webp"
-    },
-    {
+  },
+  {
     "Categoria": "gpu",
     "Fabricante": "AMD",
     "Marca": "XFX",
@@ -82,8 +68,8 @@ var productos =[
     "PrecioME": 439,
     "PrecioMN": 1615.52,
     "urlFuente": "https://www.profesionalreview.com/wp-content/uploads/2020/01/o202001061617580463.png"
-    },
-    {
+  },
+  {
     "Categoria": "RAM",
     "Fabricante": "",
     "Marca": "TEAMGROUP",
@@ -92,8 +78,8 @@ var productos =[
     "PrecioME": 49,
     "PrecioMN": 180.32,
     "urlFuente": "https://images-na.ssl-images-amazon.com/images/I/51AqFnChOjL._SX500_SY500_CR,0,0,500,500_.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "RAM",
     "Fabricante": "",
     "Marca": "HYPERX",
@@ -102,8 +88,8 @@ var productos =[
     "PrecioME": 53.5,
     "PrecioMN": 196.88,
     "urlFuente": "https://xercom.com.pe/wp-content/uploads/2020/12/HX432C16FB3A8.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "RAM",
     "Fabricante": "",
     "Marca": "GEIL",
@@ -112,8 +98,8 @@ var productos =[
     "PrecioME": 58,
     "PrecioMN": 213.44,
     "urlFuente": "https://ovalo24.com.pe/wp-content/uploads/2020/09/3778.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "RAM",
     "Fabricante": "",
     "Marca": "CORSAIR",
@@ -122,8 +108,8 @@ var productos =[
     "PrecioME": 89,
     "PrecioMN": 327.52,
     "urlFuente": "https://http2.mlstatic.com/D_NQ_NP_2X_776063-MPE43202523810_082020-F.webp"
-    },
-    {
+  },
+  {
     "Categoria": "RAM",
     "Fabricante": "",
     "Marca": "HYPERX",
@@ -132,8 +118,8 @@ var productos =[
     "PrecioME": 69,
     "PrecioMN": 253.92,
     "urlFuente": "https://media.kingston.com/kingston/product/hx-product-memory-predator-rgb-ddr4-hx429c15pb3a8-1-zm-lg.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "RAM",
     "Fabricante": "",
     "Marca": "KINGSTON",
@@ -142,8 +128,8 @@ var productos =[
     "PrecioME": 99,
     "PrecioMN": 364.32,
     "urlFuente": "https://cyccomputer.pe/31314-large_default/memoria-16gb-ddr4-hyperx-fury-black-bus-3200mhz-pnhx432c16fb416.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "RAM",
     "Fabricante": "",
     "Marca": "TEAMGROUP",
@@ -152,8 +138,8 @@ var productos =[
     "PrecioME": 189,
     "PrecioMN": 695.52,
     "urlFuente": "https://www.sercoplus.com/15881-medium_default/mem-ram-team-group-t-force-xtreem-argb.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "CPU",
     "Fabricante": "AMD",
     "Marca": "",
@@ -162,8 +148,8 @@ var productos =[
     "PrecioME": 389,
     "PrecioMN": 1431.52,
     "urlFuente": "https://www.infotec.com.pe/47506-large_default/procesador-amd-ryzen-5-5600x-100100000065box-37ghz-am4.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "CPU",
     "Fabricante": "AMD",
     "Marca": "",
@@ -172,8 +158,8 @@ var productos =[
     "PrecioME": 419,
     "PrecioMN": 1541.92,
     "urlFuente": "https://www.sercoplus.com/13028-large_default/procesador-amd-ryzen-7-3700x.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "CPU",
     "Fabricante": "AMD",
     "Marca": "",
@@ -182,8 +168,8 @@ var productos =[
     "PrecioME": 699,
     "PrecioMN": 2572.32,
     "urlFuente": "https://cyccomputer.pe/30152-large_default/procesador-amd-ryzen-9-5900x-37ghz-70mb-12core-am4-pn100-100000061wof.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "CPU",
     "Fabricante": "INTEL",
     "Marca": "",
@@ -192,8 +178,8 @@ var productos =[
     "PrecioME": 98,
     "PrecioMN": 360.64,
     "urlFuente": "https://ae01.alicdn.com/kf/H1b4c778378ba441d814ea9132a41e1fbH/Intel-Core-i3-9100F-SRF7W-BO-de-la-computadora-de-la-PC-de-escritorio-procesador-LGA1151.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "CPU",
     "Fabricante": "INTEL",
     "Marca": "",
@@ -202,8 +188,8 @@ var productos =[
     "PrecioME": 643,
     "PrecioMN": 2366.24,
     "urlFuente": "https://cdn.shopify.com/s/files/1/0474/7051/0229/products/i9-10900K_11a6c5c1-7f60-4158-87b3-f44fa5aa5562.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "CPU",
     "Fabricante": "INTEL",
     "Marca": "",
@@ -212,8 +198,8 @@ var productos =[
     "PrecioME": 689,
     "PrecioMN": 2535.52,
     "urlFuente": "https://media.ldlc.com/r1600/ld/products/00/05/66/86/LD0005668608_2.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "MOBO",
     "Fabricante": "INTEL",
     "Marca": "GIGABYTE",
@@ -222,8 +208,8 @@ var productos =[
     "PrecioME": 427,
     "PrecioMN": 1571.36,
     "urlFuente": "https://images-na.ssl-images-amazon.com/images/I/71JTXPsKGDL._AC_SY450_.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "MOBO",
     "Fabricante": "INTEL",
     "Marca": "ASROCK",
@@ -232,8 +218,8 @@ var productos =[
     "PrecioME": 498,
     "PrecioMN": 1832.64,
     "urlFuente": "https://images-na.ssl-images-amazon.com/images/I/61J1l6bnUEL._AC_SL1000_.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "MOBO",
     "Fabricante": "INTEL",
     "Marca": "ASUS",
@@ -242,8 +228,8 @@ var productos =[
     "PrecioME": 543,
     "PrecioMN": 1998.24,
     "urlFuente": "https://media.ldlc.com/r1600/ld/products/00/05/04/27/LD0005042731_2.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "MOBO",
     "Fabricante": "INTEL",
     "Marca": "ASUS",
@@ -252,8 +238,8 @@ var productos =[
     "PrecioME": 86,
     "PrecioMN": 316.48,
     "urlFuente": "https://ae01.alicdn.com/kf/H9e03071790184b12bf52fb9a6d1757c16.jpg_640x640Q90.jpg_.webp"
-    },
-    {
+  },
+  {
     "Categoria": "MOBO",
     "Fabricante": "AMD",
     "Marca": "GIGABYTE",
@@ -262,8 +248,8 @@ var productos =[
     "PrecioME": 239,
     "PrecioMN": 879.52,
     "urlFuente": "https://cyccomputer.pe/32568-large_default/mb-asus-prime-x570-pro-amd-ryzen-ddr4-am4-pcie-40-rgb-pn90mb11b0-m0aay0.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "MOBO",
     "Fabricante": "AMD",
     "Marca": "ASUS",
@@ -272,8 +258,8 @@ var productos =[
     "PrecioME": 289,
     "PrecioMN": 1063.52,
     "urlFuente": "https://http2.mlstatic.com/D_NQ_NP_856171-MPE42978379176_082020-O.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "MOBO",
     "Fabricante": "AMD",
     "Marca": "ASUS",
@@ -282,8 +268,8 @@ var productos =[
     "PrecioME": 329,
     "PrecioMN": 1210.72,
     "urlFuente": "https://images-na.ssl-images-amazon.com/images/I/81Dn81WtyvL._AC_SL1500_.jpg"
-    },
-    {
+  },
+  {
     "Categoria": "MOBO",
     "Fabricante": "AMD",
     "Marca": "ASUS",
@@ -292,23 +278,5 @@ var productos =[
     "PrecioME": 209,
     "PrecioMN": 769.12,
     "urlFuente": "https://images-na.ssl-images-amazon.com/images/I/919hzfGXZeL._AC_SL1500_.jpg"
-    }
+  }
 ]
-
-productos.forEach(function(obj) {
-    db.collection("productos").add({
-        Categoria: obj.Categoria,
-        Fabricante: obj.Fabricante,
-        Marca: obj.Marca,
-        Modelo: obj.Modelo,
-        Almacen: obj.Almacen,
-        PrecioME: obj.PrecioME,
-        PrecioMN: obj.PrecioMN,
-        urlFuente: obj.urlFuente
-    }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
-    });
-});

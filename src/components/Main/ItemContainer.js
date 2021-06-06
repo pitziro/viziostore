@@ -62,6 +62,7 @@ function ItemContainer() {
                         <ItemList
                             id={i.id}
                             key={index}
+                            urlFuente={i.urlFuente}
                             Modelo={i.Modelo}
                             PrecioMN={i.PrecioMN}
                             Categoria={i.Categoria}

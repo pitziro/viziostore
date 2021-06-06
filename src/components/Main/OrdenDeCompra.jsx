@@ -42,21 +42,23 @@ const OrdenDeCompra = () => {
     
     // Registra valores del formulario para la orden de compra //
     const handleInputs = (e) => {
-        let id = e.target.id
-        let value  = e.key
+        let idfield = e.target.id
+        let valueField  = e.target.value
 
         if ( 
-            (['name','apepat','apemat'].includes(id) && validaLetra(value)) || 
-            ( ['celular','numdoc'].includes(id) && validaNumeroMovil(value)) 
+            ( ['name','apepat','apemat'].includes(idfield) && validaLetra(valueField)) || 
+            ( ['celular','numdoc'].includes(idfield) && validaNumeroMovil(valueField)) || 
+            ( ['email','tipodoc'].includes(idfield))
             )  
         {
-            const newForm = { ...form, [id]: value }
+            const newForm = { ...form, [idfield]: e.target.value}
             setForm(newForm)
+            console.log(form)
         }
         else {
             e.preventDefault() 
             console.log("el valor no es valido")
-            
+            e.target.value = ''
         }
     }
 
@@ -104,7 +106,9 @@ const OrdenDeCompra = () => {
         }, 2000);
     }
 
-    const handleAddOrder = (f) => {
+    // funcion para manejar toda la orden de compra // 
+    // ******************************************** //
+    const handleAddOrder = (evt) => {
 
         if (!fieldsOk && cart.length >= 1) {
             // actualizo Stock
@@ -119,7 +123,9 @@ const OrdenDeCompra = () => {
             cleanCart()
         }
         else{
-            alert("Los campos aún no estan completos")
+            (cart.length === 0) 
+            ? alert("El carrito esta vacio")
+            : alert("Los campos no están llenos correctamente")
         }
     }
 
@@ -142,7 +148,7 @@ const OrdenDeCompra = () => {
                                         <label > Nombre </label>
                                     </td>
                                     <td className="border-top-0">
-                                        <input type="text" id="name" onKeyPress={(e) => handleInputs(e)} />
+                                        <input type="text" id="name" onChange={(e) => handleInputs(e)} />
                                     </td>
                                 </tr>
 
@@ -151,7 +157,7 @@ const OrdenDeCompra = () => {
                                         <label> Apellido Paterno </label>
                                     </td>
                                     <td >
-                                        <input type="text" id="apepat" onKeyPress={(e) => handleInputs(e)} />
+                                        <input type="text" id="apepat" onChange={(e) => handleInputs(e)} />
                                     </td>
                                 </tr>
 
@@ -160,7 +166,7 @@ const OrdenDeCompra = () => {
                                         <label > Apellido Materno </label>
                                     </td>
                                     <td>
-                                        <input type="text" id="apemat" onKeyPress={(e) => handleInputs(e)} />
+                                        <input type="text" id="apemat" onChange={(e) => handleInputs(e)} />
                                     </td>
                                 </tr>
 
@@ -169,12 +175,12 @@ const OrdenDeCompra = () => {
                                         <label > Documento Identidad </label>
                                     </td>
                                     <td>
-                                        <select id="tipodoc" >
+                                        <select id="tipodoc" onChange={(e) => handleInputs(e)}>
                                             <option defaultValue="none" hidden>  </option>
                                             <option value="DNI"> DNI </option>
                                             <option value="RUC"> RUC </option>
                                         </select>
-                                        <input type="text" id="numdoc" onKeyPress={(e) => handleInputs(e)} />
+                                        <input type="text" id="numdoc" placeholder="12345678" onChange={(e) => handleInputs(e)} />
                                     </td>
                                 </tr>
 
@@ -183,7 +189,7 @@ const OrdenDeCompra = () => {
                                         <label> Email </label>
                                     </td>
                                     <td >
-                                        <input type="text" id="email"  />
+                                        <input type="text" id="email" onChange={(e) => handleInputs(e)}/>
                                     </td>
                                 </tr>
 
@@ -192,7 +198,7 @@ const OrdenDeCompra = () => {
                                         <label> Número celular </label>
                                     </td>
                                     <td >
-                                        <input type="text" id="celular" onKeyPress={(e) => handleInputs(e)} />
+                                        <input type="text" id="celular" placeholder="999666333" onChange={(e) => handleInputs(e)} />
                                     </td>
                                 </tr>
 
@@ -204,7 +210,7 @@ const OrdenDeCompra = () => {
                     <div className="form_order">
                         <span className="comment"> * Todos los campos son obligatorios </span>
                         <h2>
-                            <Button type="reset"variant="primary" onClick={() => handleAddOrder(form)}>Finalizar Orden</Button>
+                            <Button type="reset"variant="primary" onClick={(e) => handleAddOrder(e)}>Finalizar Orden</Button>
                         </h2>
                     </div>
 

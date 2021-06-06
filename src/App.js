@@ -23,7 +23,7 @@ function App() {
 
           <div className='item_container'>
               <Switch>
-                <Route exact path="/viziostore"> <Welcome/> </Route>
+                <Route exact path="/"> <Welcome/> </Route>
                 <Route exact path='/tienda'> <ItemContainer/> </Route> 
                 <Route exact path='/detalle/:id'> <ItemDetailContainer/> </Route> 
                 <Route exact path='/carritolist'> <CarritoDetail/> </Route> 
