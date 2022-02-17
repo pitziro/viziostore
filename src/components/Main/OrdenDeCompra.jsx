@@ -68,16 +68,6 @@ const OrdenDeCompra = () => {
 
     // actualizacion del stock en firestore //
     const updateStock = () => {
-        // const db = getDataBase()
-        // const batch = db.batch()
-
-        // cart.forEach((item) => {
-        //     const itemRef = db.collection('productos').doc(item.itemId)
-        //     batch.update(itemRef, { Almacen: parseInt(item.stock) - parseInt(item.quantity) })
-        // })
-
-        // batch.commit()
-        //     .then((r) => console.log(r)) // siempre me sale undefined,
 
         try{
             cart.forEach((item) => {
