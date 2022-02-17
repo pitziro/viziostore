@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 import logo from '../../img/logo_transparente.png';
 import Banner from './Banner';
-import { CartContext } from '../../context/CartContext'
-import { Link } from 'react-router-dom';
 import { Carrito } from './Carrito';
 import './Navbar.css';
 

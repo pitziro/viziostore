@@ -1,10 +1,10 @@
-import React, {useState, useContext } from 'react';
-import firebase from 'firebase'
-import { Prompt } from 'react-router'
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
+import React, { useContext, useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
+import { Prompt } from 'react-router';
 import { Link } from 'react-router-dom';
-import { getFireStore } from '../../firebase/index'
 import { CartContext } from '../../context/CartContext';
-import { Button, Modal } from 'react-bootstrap'
+import { getDataBase } from '../../firebase/index';
 import './OrdenDeCompra.css';
 
 const OrdenDeCompra = () => {
@@ -15,7 +15,6 @@ const OrdenDeCompra = () => {
 
     const [visibleForm, setvisibleForm] = useState('visible')
     const [showModal, setShowModal] = useState(false);
-
 
     const [form, setForm] = useState({
         name: '',
@@ -53,7 +52,7 @@ const OrdenDeCompra = () => {
         {
             const newForm = { ...form, [idfield]: e.target.value}
             setForm(newForm)
-            console.log(form)
+            //console.log(form)
         }
         else {
             e.preventDefault() 
@@ -69,41 +68,56 @@ const OrdenDeCompra = () => {
 
     // actualizacion del stock en firestore //
     const updateStock = () => {
-        const db = getFireStore()
-        const batch = db.batch()
+        // const db = getDataBase()
+        // const batch = db.batch()
 
-        cart.forEach((item) => {
-            const itemRef = db.collection('productos').doc(item.itemId)
-            batch.update(itemRef, { Almacen: parseInt(item.stock) - parseInt(item.quantity) })
-        })
+        // cart.forEach((item) => {
+        //     const itemRef = db.collection('productos').doc(item.itemId)
+        //     batch.update(itemRef, { Almacen: parseInt(item.stock) - parseInt(item.quantity) })
+        // })
 
-        batch.commit()
-            .then((r) => console.log(r)) // siempre me sale undefined,
+        // batch.commit()
+        //     .then((r) => console.log(r)) // siempre me sale undefined,
+
+        try{
+            cart.forEach((item) => {
+                const itemUp = doc(getDataBase, 'productos', item.itemId)
+                updateDoc(itemUp, { Almacen: parseInt(item.stock) - parseInt(item.quantity) })
+            })
+        }
+        catch (e) {
+            console.log('algo pasó: ',e)
+        }
+
     }
 
-    // cargo una orden a firestore 
+    // cargo una nueva orden a firestore 
+    //********************************** */
     const loadOrder = () => {
-        const db =  getFireStore()
-        const orders = db.collection("ordenes") 
+
+        const itemCollection = collection(getDataBase, 'ordenes')
 
         const newOrder = {
             buyer: form,
             items: cart,
-            date: firebase.firestore.Timestamp.fromDate(new Date()),
+            date: serverTimestamp()
         }
 
-        orders.add(newOrder).then( ({id}) => {
+        const orderRegister = addDoc(itemCollection, newOrder)
+
+        orderRegister
+        .then( ({id}) => {
             setOrderId(id)
         })
         .catch (err => console.log(err))
 
     }
 
-    const handleHideModal= () => {
+    function handleHideModal () {
         setTimeout(() => {
             setShowModal(false)
             window.open('/','_self')
-        }, 2000);
+        }, 1000);
     }
 
     // funcion para manejar toda la orden de compra // 
@@ -111,14 +125,16 @@ const OrdenDeCompra = () => {
     const handleAddOrder = (evt) => {
 
         if (!fieldsOk && cart.length >= 1) {
-            // actualizo Stock
-            updateStock()
             
             // -- registrar la orden -- //
             loadOrder()
         
+            // actualizo Stock
+            updateStock()
+
             // mostrar un modal, limpiar el carrito y salir //
             setvisibleForm('hidden') 
+            
             setShowModal(true)
             cleanCart()
         }
@@ -225,7 +241,7 @@ const OrdenDeCompra = () => {
                         </Modal.Body>
                         
                         <Modal.Footer>
-                            <Link to="/viziostore"><Button variant="primary"> Regresar al home </Button></Link>
+                            <Link to="/"><Button variant="primary"> Regresar al home </Button></Link>
                         </Modal.Footer>
                     </Modal>
 

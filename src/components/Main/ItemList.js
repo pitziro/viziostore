@@ -19,7 +19,6 @@ function ItemList(props) {
             <Card.Footer>
                 Stock disponible: {props.Almacen}
             </Card.Footer>
-            
         </Card> 
     )
 }

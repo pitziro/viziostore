@@ -1,15 +1,15 @@
-import Welcome from './components/Main/Welcome';
 import React from 'react';
-import OrdenDeCompra from './components/Main/OrdenDeCompra'
-import Navbar from './components/Navbar/Navbar';
-import Leftbar from './components/Leftbar/Leftbar';
-import ItemDetailContainer from './components/Main/ItemDetailContainer';
-import ItemContainer from './components/Main/ItemContainer'
-import Footer from './components/Footer/Footer';
-import CarritoDetail from './components/Main/CarritoDetail'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import './components/Main/Mainsec.css'
 import './App.css';
+import Footer from './components/Footer/Footer';
+import Leftbar from './components/Leftbar/Leftbar';
+import CarritoDetail from './components/Main/CarritoDetail';
+import ItemContainer from './components/Main/ItemContainer';
+import ItemDetailContainer from './components/Main/ItemDetailContainer';
+import './components/Main/Mainsec.css';
+import OrdenDeCompra from './components/Main/OrdenDeCompra';
+import Welcome from './components/Main/Welcome';
+import Navbar from './components/Navbar/Navbar';
 
 
 function App() {
@@ -19,8 +19,8 @@ function App() {
         <Navbar/>
 
         <div id="zona_mid">
-          <Leftbar/>
 
+          <Leftbar/>
           <div className='item_container'>
               <Switch>
                 <Route exact path="/"> <Welcome/> </Route>

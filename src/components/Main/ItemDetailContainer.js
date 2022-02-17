@@ -1,17 +1,17 @@
-import React, { useState, useEffect} from 'react';
+import { collection, doc, getDoc } from "firebase/firestore";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getDataBase } from '../../firebase/index';
 import ItemDetail from './ItemDetail';
-import {useParams} from 'react-router-dom';
-import {getFireStore} from '../../firebase/index'
-import './ItemDetailContainer.css'
+import './ItemDetailContainer.css';
 
 
 const ItemDetailContainer = () => {
+	const [itemSelected, setItemSelected] = useState();
 
-    const [itemSelected, setItemSelected] = useState();
+	const { id } = useParams();
 
-    const {id} = useParams();
-
-    /*
+	/*
     useEffect(() => {
         setTimeout(() => {
             fetch (`https://608a0c808c8043001757f9b1.mockapi.io/VizioStoreAPI/bdjson/${id}`)
@@ -22,23 +22,22 @@ const ItemDetailContainer = () => {
     }, []);
     */
 
-    useEffect( () => {
-        const db = getFireStore()
-        const collectionQuery = db.collection('productos').doc(`${id}`)
+	useEffect(() => {
+		const itemCollection = collection(getDataBase, 'productos')
+		const itemRef = doc(itemCollection,id)
+		const itemQuery = getDoc(itemRef)
 
-        collectionQuery
-        .get()
-        .then (
-            (querySnapshot) => {
-                const data = querySnapshot.data()
-                setItemSelected(data)
-            }) 
-        .catch( (err) => console.log("Firestore error:", err) )
-    }, [])
+		itemQuery
+			.then((querySnapshot) => {
+				const data = querySnapshot.data();
+				setItemSelected(data);
+			})
+			.catch((err) => console.log('Firestore error:', err));
+	});
 
-    return (
-        <div className="item_detail_container">
-            {itemSelected ? 
+	return (
+		<div className='item_detail_container'>
+				{itemSelected ? 
                 <ItemDetail
                     id={id}
                     Modelo={itemSelected.Modelo}
