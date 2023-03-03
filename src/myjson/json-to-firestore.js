@@ -5,9 +5,9 @@ require("firebase/firestore");
 
 // Initialize Cloud Firestore through Firebase
 firebase.initializeApp({
-    apiKey: "AIzaSyB4mGAvdbg9h1lyw9rBNUnTLU6NV6enS-c",
-    authDomain: "viziostore-65623.firebaseapp.com",
-    projectId: "viziostore-65623"
+    apiKey: process.env.REACT_APP_APIKEY,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN,
+    projectId: process.env.REACT_APP_PROJECTID
 });
 
 var db = firebase.firestore();
@@ -295,8 +295,25 @@ var productos =[
     }
 ]
 
+// productos.forEach(function(obj) {
+//     db.collection("productos").add({
+//         Categoria: obj.Categoria,
+//         Fabricante: obj.Fabricante,
+//         Marca: obj.Marca,
+//         Modelo: obj.Modelo,
+//         Almacen: obj.Almacen,
+//         PrecioME: obj.PrecioME,
+//         PrecioMN: obj.PrecioMN,
+//         urlFuente: obj.urlFuente
+//     }).then(function(docRef) {
+//         console.log("Document written with ID: ", docRef.id);
+//     })
+//     .catch(function(error) {
+//         console.error("Error adding document: ", error);
+//     });
+
 productos.forEach(function(obj) {
-    db.collection("productos").add({
+    db.collection("tiendita").addDoc({
         Categoria: obj.Categoria,
         Fabricante: obj.Fabricante,
         Marca: obj.Marca,

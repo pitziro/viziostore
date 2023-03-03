@@ -16,7 +16,8 @@ export const CartProvider = ({ children }) => {
 			itemInCart.quantity += parseFloat(quantity);
 			let filteredCart = cart.filter((x) => x.itemId !== itemId);
 			setCart([...filteredCart, itemInCart]);
-		} else {
+		} 
+		else {
 			setCart([
 				...cart,
 				{
@@ -48,12 +49,7 @@ export const CartProvider = ({ children }) => {
 
 	setTotalImporte(
 		cart.length >= 1
-			? cart.reduce(
-					(t, i) =>
-						(t =
-							parseFloat(t) + parseFloat(i.quantity) * parseFloat(i.precio)),
-					0
-				)
+			? cart.reduce((t, i) => (t = parseFloat(t) + parseFloat(i.quantity) * parseFloat(i.precio)),0)
 			: console.log('sin items')
 	);
 

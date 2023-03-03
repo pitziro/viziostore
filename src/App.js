@@ -1,16 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import './App.css';
+
 import Footer from './components/Footer/Footer';
 import Leftbar from './components/Leftbar/Leftbar';
 import CarritoDetail from './components/Main/CarritoDetail';
 import ItemContainer from './components/Main/ItemContainer';
 import ItemDetailContainer from './components/Main/ItemDetailContainer';
-import './components/Main/Mainsec.css';
+
 import OrdenDeCompra from './components/Main/OrdenDeCompra';
 import Welcome from './components/Main/Welcome';
 import Navbar from './components/Navbar/Navbar';
 
+import './App.css';
+import './components/Main/Mainsec.css';
 
 function App() {
   return (

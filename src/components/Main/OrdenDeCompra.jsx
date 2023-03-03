@@ -1,11 +1,12 @@
-import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import React, { useContext, useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
 import { Prompt } from 'react-router';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../../context/CartContext';
 import { getDataBase } from '../../firebase/index';
+import { CartContext } from '../../context/CartContext';
+import { Button, Modal } from 'react-bootstrap';
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import './OrdenDeCompra.css';
+
 
 const OrdenDeCompra = () => {
 
